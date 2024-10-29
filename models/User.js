@@ -33,6 +33,18 @@ const userSchema = new mongoose.Schema({
   },
   resetToken: String,
   resetTokenExpiration: Date,
+  rafflesPurchased: [
+    {
+      raffleId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Raffle',
+      },
+      ticketCount: {
+        type: Number,
+        default: 1,
+      },
+    },
+  ],
 }, {
   timestamps: true, 
 });

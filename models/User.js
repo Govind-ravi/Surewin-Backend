@@ -14,14 +14,22 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  phoneNumber: {
+    type: String,
+    required: false,
+  },
+  address: {
+    type: String,
+    required: false,
+  },
+  country: {
+    type: String,
+    required: false,
+  },
   role: {
     type: String,
     enum: ['superAdmin', 'user', 'admin'],
     default: 'user',
-  },
-  tickets: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: 'Raffle',
   },
   resetToken: String,
   resetTokenExpiration: Date,
@@ -29,7 +37,7 @@ const userSchema = new mongoose.Schema({
   timestamps: true, 
 });
 
-userSchema.index({ name: 1 });
+userSchema.index({ email: 1 });
 
 const User = mongoose.model('User', userSchema);
 export default User;

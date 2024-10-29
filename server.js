@@ -4,6 +4,7 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import profileRoutes from './routes/profileRoutes.js';
 import authMiddlleware from "./middlewares/authMiddleware.js";
+import errorHandler from "./middlewares/errorHandler.js"
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
   res.send("SureWin Backend is up and running!");
 });
 
+app.use(errorHandler)
 app.listen(PORT, () => {
   console.log(`Server running on ${PORT}`);
 });
